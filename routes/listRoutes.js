@@ -18,7 +18,35 @@ listRouter.post('/addList',async(req,res)=>{
         res.status(500).json({error:err.message})
     }
 })
+listRouter.get('/:boardId',async(req,res)=>{
+    try{
+        
+        const {boardId}=req.params
+        const lists = await ListModel.find({ boardId })
+        .populate("cards")
+          res.status(200).json(lists)
 
+    }
+    catch (err) {
+        res.status(500).json({ error: err.message })
+    }
+})
+listRouter.delete('/:listId', async (req, res) => {
+    try {
+
+        const { listId } = req.params
+
+        await CardModel.deleteMany({ listId })
+
+        await ListModel.findByIdAndDelete(listId)
+
+        res.json({ message: "List deleted successfully" })
+
+    }
+    catch (err) {
+        res.status(500).json({ error: err.message })
+    }
+})
 
 
 
