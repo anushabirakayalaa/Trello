@@ -1,0 +1,53 @@
+### USER REGISTER
+POST http://localhost:3333/auth-api/register
+Content-Type: application/json
+
+{
+    "name": "Usha",
+    "email": "ushamail.com",
+    "password": "1234"
+
+}
+
+### User Login
+POST http://localhost:3333/common-api/login
+Content-Type: application/json
+
+{
+  "email": "usha@Gmail.com",
+  "password": "1234",
+  "role":"USER"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+###
+POST http://localhost:3333/list-api/addList
+Content-Type: application/json
+
+{
+    "title": "Test List",
+    "boardId":"123456"
+}
+
+
+
+
+###
+POST http://localhost:3333/routes/addCard
+Content-Type: application/json
+
+{
+    "title": "Test Card",
+    "listId":"123456"
+}
